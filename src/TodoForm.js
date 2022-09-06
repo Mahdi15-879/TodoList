@@ -7,17 +7,21 @@ function TodoForm({ addTodo }) {
   return (
     <Paper style={{ margin: "1rem 0", padding: "0 1rem" }}>
       <form
-        onSubmit={e => {
+        onSubmit={(e) => {
           e.preventDefault();
-          addTodo(value);
-          reset();
+          if (value !== "") {
+            addTodo(value);
+            reset();
+          } else {
+            alert("You must write something in the ToDo field.");
+          }
         }}
       >
         <TextField
           value={value}
           onChange={handleChange}
-          margin='normal'
-          label='Add New Todo'
+          margin="normal"
+          label="Add New Todo"
           fullWidth
         />
       </form>
